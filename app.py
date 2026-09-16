@@ -11,8 +11,7 @@ from model_utils import load_model, load_config, predict, UNCERTAINTY_THRESHOLD
 st.set_page_config(page_title="Brain MRI Tumor Classifier", layout="centered")
 
 st.title("Brain MRI Tumor Classifier")
-st.markdown(
-)
+st.markdown("Upload a brain MRI slice below to classify the tumor type" )
 
 
 @st.cache_resource
@@ -60,17 +59,15 @@ if uploaded_file is not None and MODEL_LOADED:
 
     st.divider()
 
-    # Plain-language explanation
     explanation = CLASS_EXPLANATIONS.get(predicted_class, "an unrecognised pattern")
     st.markdown(
         f"**In plain language:** The model predicts this MRI slice shows {explanation}, "
         f"with **{confidence*100:.1f}% confidence**."
     )
 
-    # Honest uncertainty handling — never fake confidence
     if is_uncertain:
         st.warning(
-            f"⚠️The model's top prediction has confidence below {UNCERTAINTY_THRESHOLD*100:.0f}%. "
+            f"The model's top prediction has confidence below {UNCERTAINTY_THRESHOLD*100:.0f}%. "
             "This means the image may not closely resemble anything the model saw during training, "
             "or the case may genuinely be ambiguous. **Treat this result as unreliable** — it should "
             "not be treated as a meaningful diagnosis either way."

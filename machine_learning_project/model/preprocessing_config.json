@@ -1,0 +1,15 @@
+{
+  "img_size": [
+    64,
+    64
+  ],
+  "channels": 3,
+  "rescale": 0.00392156862745098,
+  "channel_order": "RGB",
+  "class_names": [
+    "benign",
+    "malignant"
+  ],
+  "output_type": "binary_sigmoid",
+  "tf_version": "2.20.0"
+}
